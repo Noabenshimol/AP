@@ -1,0 +1,48 @@
+
+public class AP {
+    private int firstMember, difference;
+
+    // בנאי לאובייקט המעדכן איבר ראשון והפרש סדרה
+    public AP(int diff, int fM) {
+        difference = diff;
+        firstMember = fM;
+    }
+    public void printGeneralSeries() {
+        String arithmeticProgression = "an = a1 + d * (n - 1)";
+        System.out.println("Arithmetic progression formula: " + arithmeticProgression);
+    }
+
+    public int memberCalculation(int n) {
+        int an = firstMember + difference * (n - 1);
+        return an;
+    }
+
+    public int calculateN(int an) {
+        if ((an - firstMember) % difference == 0) {
+            return ((an - firstMember) / difference) + 1;
+        } else {
+            return 0;
+        }
+    }
+
+
+public class Tester {
+    public static void main(String[] args) {
+        // יצירת אובייקט מסדרה חשבונית
+        AP ap = new AP(3, 5);
+        // קריאה לפונקציה המדפיסה את הנוסחה הכללית
+        ap.printGeneralSeries();
+
+        // קריאה לפונקציה המחשבת את האיבר ה-5 בסדרה
+        int fifthMember = ap.memberCalculation(5);
+        System.out.println(fifthMember);
+
+        // קריאה לפונקציה המחשבת את האינדקס של האיבר 17 בסדרה
+        int indexOf17 = ap.calculateN(17);
+        if (indexOf17 != 0) {
+            System.out.println(indexOf17);
+        } else {
+            System.out.println("The number 17 is not in the arithmetic progression.");
+        }
+        }
+    }
